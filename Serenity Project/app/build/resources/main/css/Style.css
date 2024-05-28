@@ -1,0 +1,140 @@
+
+
+.logo-text1 {
+    -fx-font-size: 320px;
+    -fx-font-family: 'Tahoma';
+    -fx-font-weight: bold;
+    -fx-text-align: left;
+    -fx-fill: #ffff67;
+    -fx-translate-x: 500;
+    -fx-translate-y: 400;
+}
+
+.logo-text2 {
+    -fx-font-size: 79px;
+    -fx-font-family: 'Times New Roman';
+    -fx-font-weight: lighter;
+    -fx-text-align: left;
+    -fx-fill: #ffffff;
+    -fx-translate-y: 50;
+}
+
+.logo-text3 {
+    -fx-font-size: 35px;
+    -fx-font-family: 'Tahoma';
+    -fx-font-weight: bold;
+    -fx-text-align: left;
+    -fx-fill: #ffffff;
+    -fx-translate-x: 100;
+    -fx-translate-y: 10;
+}
+
+.texts {
+    -fx-font-size: 20px;
+    -fx-font-family: 'Tahoma';
+    -fx-font-weight: bold;
+    -fx-text-align: left;
+    -fx-text-fill: #ffffff;
+    -fx-translate-x: 0;
+    -fx-translate-y: 15;
+}
+
+.InnBox {
+    -fx-fill: #e79d36;
+}
+
+#menuButton {
+    -fx-font-size: 38px;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #e79d36;
+    -fx-font-family: 'Tahoma';
+    -fx-translate-x: -10;
+    -fx-translate-y: 150;
+}
+
+#addButton {
+    -fx-font-size: 38px;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #e79d36;
+    -fx-font-family: 'Tahoma';
+    -fx-translate-x: 0;
+    -fx-translate-y: -100;
+}
+
+#updateButton {
+    -fx-font-size: 38px;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #e79d36;
+    -fx-font-family: 'Tahoma';
+    -fx-translate-x: 0;
+    -fx-translate-y: 0;
+}
+
+#deleteButton {
+    -fx-font-size: 38px;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #e79d36;
+    -fx-font-family: 'Tahoma';
+    -fx-translate-x: 0;
+    -fx-translate-y: 100;
+}
+
+.btnLing {
+    -fx-translate-x: -40;
+    -fx-translate-y: 10;
+    -fx-background-color: #692c1d;
+}
+
+.btnLing1 {
+    -fx-translate-x: 40;
+    -fx-translate-y: 10;
+    -fx-background-color: #692c1d;
+}
+
+.backbtn {
+    -fx-translate-x: 42;
+    -fx-translate-y: 12;
+}
+
+.img1 {
+    -fx-translate-x: 155;
+    -fx-translate-y: 75;
+    -fx-size-adjust: 300px;
+}
+
+.img2 {
+    -fx-translate-x: -155;
+    -fx-translate-y: 77;
+    -fx-size-adjust: 300px;
+}
+
+.img3 {
+    -fx-translate-x: 155;
+    -fx-size-adjust: 175px;
+}
+
+.img4 {
+    -fx-translate-x: -162;
+    -fx-size-adjust: 150px;
+}
+.img5 {
+    -fx-translate-y: -150;
+}
+.img6 {
+    -fx-translate-x: -42;
+    -fx-translate-y: 10;
+}
+.img7 {
+    -fx-translate-x: 270;
+    -fx-translate-y: 100;
+}
+
+.img8 {
+    -fx-translate-x: -282;
+    -fx-translate-y: 100;
+}
+
+
+.root {
+    -fx-background-image: url(/image/Background.jpg);
+}

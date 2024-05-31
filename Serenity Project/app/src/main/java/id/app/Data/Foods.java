@@ -5,14 +5,14 @@ import javafx.beans.property.*;
 public class Foods {
     private final IntegerProperty id;
     private final IntegerProperty provinsiId;
-    private final StringProperty nama;
+    private final StringProperty name;
     private final StringProperty asal;
     private final StringProperty deskripsi;
 
-    public Foods(int id, int provinsiId,String nama,String asal,String deskripsi) {
+    public Foods(int provinsiId,String name,String asal,String deskripsi) {
         this.id = new SimpleIntegerProperty();
         this.provinsiId = new SimpleIntegerProperty(provinsiId);
-        this.nama = new SimpleStringProperty(nama);
+        this.name = new SimpleStringProperty(name);
         this.asal = new SimpleStringProperty(asal);
         this.deskripsi = new SimpleStringProperty(deskripsi);
       }
@@ -42,15 +42,15 @@ public class Foods {
     }
     
     public String getNama() {
-        return nama.get();
+        return name.get();
     }
     
-    public void setNama(String nama) {
-        this.nama.set(nama);
+    public void setNama(String name) {
+        this.name.set(name);
     }
     
     public StringProperty namaProperty() {
-        return nama;
+        return name;
     }
     
     public String getAsal() {
@@ -74,6 +74,6 @@ public class Foods {
     }
 
     public StringProperty deskripsiProperty() {
-        return asal;
+        return deskripsi;
         }
 }

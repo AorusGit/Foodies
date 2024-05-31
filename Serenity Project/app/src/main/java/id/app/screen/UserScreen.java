@@ -12,24 +12,24 @@ import javafx.scene.image.*;
 import id.app.App;
 import java.util.*;
 
-public class AdminScreen {
+public class UserScreen {
     private App app;
     private Scene scene;
     int column;
     int row;
 
-    public AdminScreen(App app) {
+    public UserScreen(App app) {
         this.app = app;
-        adminScreen();
+        userScreen();
     }
 
-    private void adminScreen(){
+    private void userScreen(){
         List<Provinsi> provinsis = ProvinsiController.getAllProvinsi();
 
         Pane root = new Pane();
         StackPane stack = new StackPane();
 
-        Text page = new Text("ADMIN PAGE");
+        Text page = new Text("USER PAGE");
         page.getStyleClass().add("logo-text3");
 
         Rectangle kotak = new Rectangle();
@@ -65,7 +65,7 @@ public class AdminScreen {
             province.setOnMouseClicked(event -> {
                 app.setSelectedProvinsiId(provinsi.getId());
                 System.out.println(provinsi.getId());
-                app.showEditorScreen();
+                app.showFoodScreen();
             });
             vbox.add(province,column,row);
             vbox.setAlignment(Pos.CENTER);

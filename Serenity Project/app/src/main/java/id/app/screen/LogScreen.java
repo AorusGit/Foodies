@@ -1,7 +1,6 @@
 package id.app.screen;
 
 import javafx.scene.Scene;
-import javafx.stage.Stage;
 import javafx.geometry.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -9,8 +8,6 @@ import javafx.scene.text.*;
 import javafx.scene.shape.*;
 import javafx.scene.image.*;
 import id.app.App;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.layout.StackPane;
 
 public class LogScreen {
@@ -81,7 +78,7 @@ public class LogScreen {
         menuButton.setShape(box);
         menuButton.setMinSize(430,70);
         menuButton.setId("menuButton");
-        menuButton.setOnAction(e -> app.showProvinsi());
+        menuButton.setOnAction(e -> app.showUserScreen());
 
         Button btnLng = new Button();
         btnLng.setShape(new Circle(100));
@@ -109,7 +106,6 @@ public class LogScreen {
         StackPane.setAlignment(imageView8, Pos.BOTTOM_RIGHT);
         StackPane.setAlignment(menuButton, Pos.CENTER);
         stack.setAlignment(Pos.CENTER);
-
         stack.prefWidthProperty().bind(app.getPrimaryStage().widthProperty());
         stack.prefHeightProperty().bind(app.getPrimaryStage().heightProperty());
     

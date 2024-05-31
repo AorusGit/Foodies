@@ -1,7 +1,5 @@
 package id.app.screen;
 
-import id.app.Controller.ProvinsiController;
-import id.app.Data.Provinsi;
 import javafx.scene.Scene;
 import javafx.geometry.*;
 import javafx.scene.control.*;
@@ -10,26 +8,30 @@ import javafx.scene.text.*;
 import javafx.scene.shape.*;
 import javafx.scene.image.*;
 import id.app.App;
-import java.util.*;
+import id.app.Controller.FoodsController;
+import javafx.scene.layout.StackPane;
+import id.app.Data.Foods;
+import java.util.List;
 
-public class AdminScreen {
+public class FoodScreen {
     private App app;
     private Scene scene;
-    int column;
-    int row;
+    private int column;
+    private int row;
 
-    public AdminScreen(App app) {
+    public FoodScreen(App app) {
         this.app = app;
-        adminScreen();
+        foodScreen();
     }
 
-    private void adminScreen(){
-        List<Provinsi> provinsis = ProvinsiController.getAllProvinsi();
+    private void foodScreen() {
+        List<Foods> foods = FoodsController.getFoodsByProvinsiId(app.getSelectedProvinsiId());
+        String provinsiName = FoodsController.getProvinsiNameById(app.getSelectedProvinsiId());
 
         Pane root = new Pane();
         StackPane stack = new StackPane();
 
-        Text page = new Text("ADMIN PAGE");
+        Text page = new Text(provinsiName != null ? provinsiName : "FOOD PAGE");
         page.getStyleClass().add("logo-text3");
 
         Rectangle kotak = new Rectangle();
@@ -44,7 +46,7 @@ public class AdminScreen {
         btnLng1.setShape(new Circle(100));
         btnLng1.setMinSize(50, 50);
         btnLng1.getStyleClass().add("btnLing1");
-        btnLng1.setOnAction(e -> app.showLogScreen());
+        btnLng1.setOnAction(e -> app.showUserScreen());
 
         Image image1 = new Image(getClass().getResource("/image/back.png").toExternalForm());
 
@@ -52,42 +54,41 @@ public class AdminScreen {
         imageView1.setFitWidth(45);
         imageView1.setFitHeight(45);
         imageView1.getStyleClass().add("backbtn");
-        imageView1.setOnMouseClicked(e -> app.showLogScreen());
+        imageView1.setOnMouseClicked(e -> app.showUserScreen());
 
         GridPane vbox = new GridPane();
         vbox.setHgap(24);
         vbox.setVgap(10);
-        
-        for ( Provinsi provinsi : provinsis) {
-            Label province = new Label("• " + provinsi.getNama());
-            province.getStyleClass().add("texts");
-            province.setPadding(new Insets(10,75,10,75));
-            province.setOnMouseClicked(event -> {
-                app.setSelectedProvinsiId(provinsi.getId());
-                System.out.println(provinsi.getId());
-                app.showEditorScreen();
+
+        for (Foods food : foods) {
+            Label foodLabel = new Label("• " + food.getNama());
+            foodLabel.getStyleClass().add("datas");
+            foodLabel.setPadding(new Insets(10, 75, 10, 75));
+            foodLabel.setOnMouseClicked(event -> {
+                System.out.println(food.getNama());
+                app.setSelectedFood(food.getNama());
+                app.showFoodDetailScreen();
             });
-            vbox.add(province,column,row);
+            vbox.add(foodLabel,column,row);
             vbox.setAlignment(Pos.CENTER);
             row++;
             if (row == 11) {
                 row = 0;
                 column++;
             }
-
         }
 
-        stack.getChildren().addAll(border,page,vbox,btnLng1,imageView1);
+        stack.getChildren().addAll(border, page, vbox, btnLng1,imageView1);
         stack.setAlignment(Pos.CENTER);
         StackPane.setAlignment(page, Pos.TOP_LEFT);
         StackPane.setAlignment(btnLng1, Pos.TOP_LEFT);
         StackPane.setAlignment(imageView1, Pos.TOP_LEFT);
 
         root.getChildren().addAll(stack);
-        
+
         stack.prefWidthProperty().bind(app.getPrimaryStage().widthProperty());
         stack.prefHeightProperty().bind(app.getPrimaryStage().heightProperty());
-    
+
         scene = new Scene(root);
         applyStylesheet();
     }
@@ -101,4 +102,3 @@ public class AdminScreen {
         return scene;
     }
 }
-

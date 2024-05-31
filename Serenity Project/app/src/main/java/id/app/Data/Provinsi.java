@@ -4,11 +4,11 @@ import javafx.beans.property.*;
 
 public class Provinsi {
     private final IntegerProperty id;
-    private final StringProperty nama;
+    private final StringProperty name;
 
-    public Provinsi(String nama) {
+    public Provinsi(String name) {
         this.id = new SimpleIntegerProperty();
-        this.nama = new SimpleStringProperty(nama);
+        this.name = new SimpleStringProperty(name);
     }
 
     public int getId() {
@@ -24,14 +24,14 @@ public class Provinsi {
     }
 
     public String getNama() {
-        return nama.get();
+        return name.get();
     }
 
-    public void setNama(String nama) {
-        this.nama.set(nama);
+    public void setNama(String name) {
+        this.name.set(name);
     }
 
     public StringProperty namaProperty() {
-        return nama;
+        return name;
     }
 }

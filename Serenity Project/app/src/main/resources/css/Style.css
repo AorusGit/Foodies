@@ -29,6 +29,16 @@
     -fx-translate-y: 10;
 }
 
+.logo-text4 {
+    -fx-font-size: 35px;
+    -fx-font-family: 'Tahoma';
+    -fx-font-weight: bold;
+    -fx-text-align: left;
+    -fx-fill: #ffffff;
+    -fx-translate-x: 93;
+    -fx-translate-y: 75;
+}
+
 .texts {
     -fx-font-size: 20px;
     -fx-font-family: 'Tahoma';
@@ -37,6 +47,26 @@
     -fx-text-fill: #ffffff;
     -fx-translate-x: 0;
     -fx-translate-y: 15;
+}
+
+.datas {
+    -fx-font-size: 40px;
+    -fx-font-family: 'Tahoma';
+    -fx-font-weight: bold;
+    -fx-text-align: left;
+    -fx-text-fill: #ffffff;
+    -fx-translate-x: 0;
+    -fx-translate-y: 15;
+}
+
+.dTexts {
+    -fx-font-size: 25px;
+    -fx-font-family: 'Tahoma';
+    /* -fx-font-weight: bold; */
+    -fx-text-align: justify;
+    -fx-text-fill: #ffffff;
+    -fx-translate-x: 0;
+    -fx-translate-y: -50;
 }
 
 .InnBox {
@@ -50,34 +80,90 @@
     -fx-font-family: 'Tahoma';
     -fx-translate-x: -10;
     -fx-translate-y: 150;
+    -fx-fill: #e79d36;
+}
+
+#deskBox {
+    -fx-text-size: 30px;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #e79d36;
+    -fx-text-family: 'Tahoma';
+    -fx-translate-x: 0;
+    -fx-translate-y: 0;
+    -fx-fill: #e79d36; 
 }
 
 #addButton {
-    -fx-font-size: 38px;
+    -fx-font-size: 15px;
     -fx-text-fill: #ffffff;
     -fx-background-color: #e79d36;
     -fx-font-family: 'Tahoma';
-    -fx-translate-x: 0;
-    -fx-translate-y: -100;
+    -fx-translate-x: -400;
+    -fx-translate-y: 80;
+    -fx-padding: 10 20;
 }
 
 #updateButton {
-    -fx-font-size: 38px;
+    -fx-font-size: 15px;
     -fx-text-fill: #ffffff;
     -fx-background-color: #e79d36;
     -fx-font-family: 'Tahoma';
-    -fx-translate-x: 0;
-    -fx-translate-y: 0;
+    -fx-translate-x: -360;
+    -fx-translate-y: 80;
+    -fx-padding: 10 20;
 }
 
 #deleteButton {
-    -fx-font-size: 38px;
+    -fx-font-size: 15px;
     -fx-text-fill: #ffffff;
     -fx-background-color: #e79d36;
     -fx-font-family: 'Tahoma';
-    -fx-translate-x: 0;
-    -fx-translate-y: 100;
+    -fx-translate-x: -310;
+    -fx-translate-y: 80;
+    -fx-padding: 10 20;
 }
+
+.namaMakanan {
+    -fx-text-fill: rgb(55, 5, 5);
+    -fx-font-size: 15px;
+    -fx-translate-x: -20;
+    -fx-translate-y: 120;
+    -fx-padding: 10 20;
+    -fx-background-color: #d5a96a;
+    -fx-prompt-text-fill: brown;
+}
+
+.deskMakanan {
+    -fx-text-fill: rgb(55, 5, 5);
+    -fx-font-size: 15px;
+    -fx-translate-x: -20;
+    -fx-translate-y: 120;
+    -fx-padding: 10 20;
+    -fx-background-color: #d5a96a;
+    -fx-prompt-text-fill: brown;
+}
+
+#descriptionArea {
+    -fx-control-inner-background: #d5a96a; 
+    -fx-text-fill: #580505; 
+}
+
+.table-row-cell {
+    -fx-background-color: #e9aa36; 
+}
+
+.table-row-cell:even {
+    -fx-background-color: #e9aa36; 
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #e9aa36; 
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #e9aa36; 
+}
+
 
 .btnLing {
     -fx-translate-x: -40;

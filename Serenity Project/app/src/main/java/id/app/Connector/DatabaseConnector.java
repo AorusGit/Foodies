@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnector {
-  private static final String URL = "jdbc:sqlite:dataKuliner.sqlite";
+  private static final String URL = "jdbc:sqlite:data-Kuliner.sqlite";
 
   public static Connection connect() {
     Connection conn = null;

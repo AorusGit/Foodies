@@ -12,7 +12,7 @@ import javafx.scene.image.*;
 import id.app.App;
 import java.util.*;
 
-public class AdminScreen {
+public class AdminScreen implements Show {
     private App app;
     private Scene scene;
     int column;
@@ -20,7 +20,7 @@ public class AdminScreen {
 
     public AdminScreen(App app) {
         this.app = app;
-        adminScreen();
+        show();
     }
 
     private void adminScreen(){
@@ -63,9 +63,13 @@ public class AdminScreen {
             province.getStyleClass().add("texts");
             province.setPadding(new Insets(10,75,10,75));
             province.setOnMouseClicked(event -> {
-                app.setSelectedProvinsiId(provinsi.getId());
-                System.out.println(provinsi.getId());
-                app.showEditorScreen();
+                try {
+                    app.setSelectedProvinsiId(provinsi.getId());
+                    System.out.println("testing" + provinsi.getId());
+                    app.showEditorScreen();
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
             });
             vbox.add(province,column,row);
             vbox.setAlignment(Pos.CENTER);
@@ -92,6 +96,9 @@ public class AdminScreen {
         applyStylesheet();
     }
 
+    public void show(){
+        adminScreen();
+    }
     private void applyStylesheet() {
         String css = this.getClass().getResource("/css/Style.css").toExternalForm();
         scene.getStylesheets().add(css);

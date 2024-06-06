@@ -1,79 +1,53 @@
 package id.app.Data;
 
-import javafx.beans.property.*;
 
 public class Foods {
-    private final IntegerProperty id;
-    private final IntegerProperty provinsiId;
-    private final StringProperty name;
-    private final StringProperty asal;
-    private final StringProperty deskripsi;
+    private int id;
+    private int provinsiId;
+    private String nama;
+    private String deskripsi;
 
-    public Foods(int provinsiId,String name,String asal,String deskripsi) {
-        this.id = new SimpleIntegerProperty();
-        this.provinsiId = new SimpleIntegerProperty(provinsiId);
-        this.name = new SimpleStringProperty(name);
-        this.asal = new SimpleStringProperty(asal);
-        this.deskripsi = new SimpleStringProperty(deskripsi);
-      }
+    public Foods(){}
+
+    public Foods(String nama){
+        this.nama = nama;
+    }
     
+    public Foods(int provinsiId, String nama, String deskripsi) {
+        this.provinsiId = provinsiId;
+        this.nama = nama;
+        this.deskripsi = deskripsi;
+    }
+
     public int getId() {
-        return id.get();
-        }
-    
-    public void setId(int id) {
-        this.id.set(id);
-        }
-
-    public IntegerProperty idProperty() {
         return id;
-        }
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getProvinsiId() {
-        return provinsiId.get();
-        }
-
-    public void setProvinsiId(int provinsiId) {
-        this.provinsiId.set(provinsiId);
-        }
-    
-    public IntegerProperty provinsiIdProperty() {
         return provinsiId;
     }
-    
+
+    public void setProvinsiId(int provinsiId) {
+        this.provinsiId = provinsiId;
+    }
+
     public String getNama() {
-        return name.get();
-    }
-    
-    public void setNama(String name) {
-        this.name.set(name);
-    }
-    
-    public StringProperty namaProperty() {
-        return name;
-    }
-    
-    public String getAsal() {
-        return asal.get();
+        return nama;
     }
 
-    public void setAsal(String asal) {
-        this.asal.set(asal);
+    public void setNama(String nama) {
+        this.nama = nama;
     }
 
-    public StringProperty asalProperty() {
-        return asal;
-        }
-    
     public String getDeskripsi() {
-        return deskripsi.get();
+        return deskripsi;
     }
 
     public void setDeskripsi(String deskripsi) {
-        this.deskripsi.set(deskripsi);
+        this.deskripsi = deskripsi;
     }
-
-    public StringProperty deskripsiProperty() {
-        return deskripsi;
-        }
 }

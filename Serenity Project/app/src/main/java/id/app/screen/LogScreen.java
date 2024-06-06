@@ -10,13 +10,13 @@ import javafx.scene.image.*;
 import id.app.App;
 import javafx.scene.layout.StackPane;
 
-public class LogScreen {
+public class LogScreen implements Show {
     private App app;
     private Scene scene;
 
     public LogScreen(App app) {
         this.app = app;
-        mainScreen();
+        show();
     }
 
     private void mainScreen(){
@@ -112,7 +112,10 @@ public class LogScreen {
         scene = new Scene(root);
         applyStylesheet();
     }
-
+    public void show(){
+        mainScreen();
+    }
+    
     private void applyStylesheet() {
         String css = this.getClass().getResource("/css/Style.css").toExternalForm();
         scene.getStylesheets().add(css);

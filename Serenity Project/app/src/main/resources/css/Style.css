@@ -62,7 +62,6 @@
 .dTexts {
     -fx-font-size: 25px;
     -fx-font-family: 'Tahoma';
-    /* -fx-font-weight: bold; */
     -fx-text-align: justify;
     -fx-text-fill: #ffffff;
     -fx-translate-x: 0;
@@ -220,6 +219,11 @@
     -fx-translate-y: 100;
 }
 
+.highlight-row {
+    -fx-background-color: yellow;
+    -fx-border-color: red;
+    -fx-border-width: 2px;
+}
 
 .root {
     -fx-background-image: url(/image/Background.jpg);

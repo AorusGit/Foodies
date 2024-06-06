@@ -2,7 +2,7 @@ package id.app.screen;
 
 import id.app.Controller.ProvinsiController;
 import id.app.Data.Provinsi;
-import javafx.scene.Scene;
+import javafx.scene.*;
 import javafx.geometry.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;

@@ -1,28 +1,21 @@
 package id.app.screen;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.collections.*;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.geometry.Pos;
-import javafx.geometry.Insets;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.geometry.*;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Circle;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import id.app.App;
+import javafx.scene.shape.*;
+import javafx.scene.image.*;
 import id.app.Controller.FoodsController;
 import id.app.Data.Foods;
+import id.app.App;
 
 import java.util.List;
 
-public class EditorScreen {
+public class EditorScreen extends admin {
     private App app;
     private Scene scene;
     private TableView<Foods> tableView;
@@ -30,16 +23,21 @@ public class EditorScreen {
 
     private TextField nameField;
     private TextArea descriptionField;
-
+    private List<Foods> foods;
+    private String provinsiName;
+    int id;
+    Foods rowData;
+    int food;
+    
     public EditorScreen(App app) {
         this.app = app;
-        editorScreen();
+        this.foods = FoodsController.getFoodsByProvinsiId(app.getSelectedProvinsiId());
+        this.provinsiName = FoodsController.getProvinsiNameById(app.getSelectedProvinsiId());
+        edit();
     }
 
-    private void editorScreen() {
-        List<Foods> foods = FoodsController.getFoodsByProvinsiId(app.getSelectedProvinsiId());
-        String provinsiName = FoodsController.getProvinsiNameById(app.getSelectedProvinsiId());
 
+    private void editorScreen() {
         BorderPane root = new BorderPane();
         StackPane stack = new StackPane();
 
@@ -73,17 +71,33 @@ public class EditorScreen {
         Button addButton = new Button("Add");
         addButton.setId("addButton");
         addButton.getStyleClass().add("addButton");
-        addButton.setOnAction(e -> addFood(nameField.getText(), descriptionField.getText()));
+        addButton.setOnAction(e -> {
+            addFood(nameField.getText(), descriptionField.getText());
+        });
 
         Button updateButton = new Button("Update");
         updateButton.setId("updateButton");
         updateButton.getStyleClass().add("updateButton");
-        updateButton.setOnAction(e -> updateFood(nameField.getText(), descriptionField.getText()));
+        updateButton.setOnAction(e -> {
+            Foods selectedFood = tableView.getSelectionModel().getSelectedItem();
+            if (selectedFood != null) {
+                int foodId = selectedFood.getId();
+                updateFood(foodId, nameField.getText(), descriptionField.getText());
+                nameField.clear();
+                descriptionField.clear();
+            } else {
+                showAlert("Selection Error", "No food selected");
+            }
+        });
 
         Button deleteButton = new Button("Delete");
         deleteButton.setId("deleteButton");
         deleteButton.getStyleClass().add("deleteButton");
-        deleteButton.setOnAction(e -> deleteFood());
+        deleteButton.setOnAction(e -> {
+            deleteFood();
+            nameField.clear();
+            descriptionField.clear();
+        });
 
         VBox fieldBox = new VBox(10, nameField, descriptionField);
         fieldBox.setAlignment(Pos.TOP_CENTER);
@@ -118,7 +132,7 @@ public class EditorScreen {
 
         StackPane leftStack = new StackPane(centerBox);
         leftStack.setAlignment(Pos.CENTER_LEFT);
-        StackPane.setMargin(centerBox, new Insets(0, 0, 0, 50)); // Add margin to the left
+        StackPane.setMargin(centerBox, new Insets(0, 0, 0, 50));
 
         root.setTop(stack);
         root.setLeft(leftStack);
@@ -127,7 +141,9 @@ public class EditorScreen {
         scene = new Scene(root);
         applyStylesheet();
     }
+    
 
+    @SuppressWarnings("unchecked")
     private TableView<Foods> createFoodTable(List<Foods> foods) {
         TableView<Foods> tableView = new TableView<>();
         tableView.setPrefWidth(900);
@@ -180,9 +196,9 @@ public class EditorScreen {
             TableRow<Foods> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (!row.isEmpty()) {
-                    Foods rowData = row.getItem();
-                    app.setSelectedFood(rowData.getNama());
+                    rowData = row.getItem();
                     nameField.setText(rowData.getNama());
+                    rowData.getId();
                     descriptionField.setText(rowData.getDeskripsi());
                 }
             });
@@ -197,12 +213,27 @@ public class EditorScreen {
             showAlert("Input Error", "Name and description cannot be empty");
             return;
         }
-        Foods newFood = new Foods(0, name, description, "");
+        for (Foods food : data) {
+            if (food.getNama().equalsIgnoreCase(name)) {
+                showAlert("Tidak bisa menambah data", "Makanan dengan nama yang sama sudah ada");
+                return;
+            }
+        }
+        for (Foods food : data) {
+            if (food.getDeskripsi().equalsIgnoreCase(description)) {
+                showAlert("Tidak bisa menambah data", "Detail makanan yang sama sudah ada");
+                return;
+            }
+        }
+        Foods newFood = new Foods(app.getSelectedProvinsiId(), name, description);
         data.add(newFood);
         FoodsController.addFood(newFood);
+        nameField.clear();
+        descriptionField.clear();
+        tableView.refresh();
     }
 
-    private void updateFood(String name, String description) {
+    private void updateFood(int foodId, String name, String description) {
         Foods selectedFood = tableView.getSelectionModel().getSelectedItem();
         if (selectedFood == null) {
             showAlert("Selection Error", "No food selected");
@@ -214,8 +245,9 @@ public class EditorScreen {
         }
         selectedFood.setNama(name);
         selectedFood.setDeskripsi(description);
-        tableView.refresh();
+        selectedFood.setId(foodId);
         FoodsController.updateFood(selectedFood);
+        tableView.refresh();
     }
 
     private void deleteFood() {
@@ -235,6 +267,9 @@ public class EditorScreen {
         alert.showAndWait();
     }
 
+    public void edit(){
+        editorScreen();
+    }
     private void applyStylesheet() {
         String css = this.getClass().getResource("/css/Style.css").toExternalForm();
         scene.getStylesheets().add(css);
@@ -248,3 +283,4 @@ public class EditorScreen {
         return tableView;
     }
 }
+

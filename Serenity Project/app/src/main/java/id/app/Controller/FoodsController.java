@@ -12,8 +12,7 @@ import java.util.List;
 
 public class FoodsController {
     private static List<Foods> foodsDatabase = new ArrayList<>();
-
-    public static void loadAllFoods() {
+    public static List<Foods> loadAllFoods() {
         String sql = "SELECT * FROM foods";
         try (Connection conn = DatabaseConnector.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -23,16 +22,17 @@ public class FoodsController {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 int provinsiId = rs.getInt("provinsi_id");
-                String asal = rs.getString("asal");
                 String deskripsi = rs.getString("deskripsi");
 
-                Foods food = new Foods(provinsiId, name, asal, deskripsi);
+                Foods food = new Foods(provinsiId, name, deskripsi);
+                food.setId(id);
                 foodsDatabase.add(food);
             }
-            System.out.println("Foods loaded from database: " + foodsDatabase.size()); // Debug log
+            System.out.println("Foods loaded from database: " + foodsDatabase.size());
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        return foodsDatabase;
     }
 
     public static String getProvinsiNameById(int provinsiId) {
@@ -49,26 +49,6 @@ public class FoodsController {
             System.out.println(e.getMessage());
         }
         return provinsiName;
-    }
-
-    public static Foods getProvinsi(String asal) {
-        Foods food = null;
-        String sql = "SELECT * FROM foods WHERE asal=?";
-        try (Connection conn = DatabaseConnector.connect();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, asal);
-            ResultSet rse = pstmt.executeQuery();
-            while (rse.next()) {
-                String name = rse.getString("name");
-                int id = rse.getInt("id");
-                int provinsiId = rse.getInt("provinsi_id");
-                String deskripsi = rse.getString("deskripsi");
-                food = new Foods(provinsiId, name, asal, deskripsi);
-            }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return food;
     }
 
     public static List<Foods> getFoodsByProvinsiId(int provinsiId) {
@@ -91,44 +71,50 @@ public class FoodsController {
     }
 
     public static void addFood(Foods food) {
-        String sql = "INSERT INTO foods (name, provinsi_id, asal, deskripsi) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO foods (name, provinsi_id, deskripsi) VALUES (?, ?, ?)";
         try (Connection conn = DatabaseConnector.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, food.getNama());
             pstmt.setInt(2, food.getProvinsiId());
-            pstmt.setString(3, food.getAsal());
-            pstmt.setString(4, food.getDeskripsi());
+            pstmt.setString(3, food.getDeskripsi());
             pstmt.executeUpdate();
             foodsDatabase.add(food);
-            System.out.println("Food added to database: " + food.getNama()); // Debug log
+            System.out.println("Food added to database: " + food.getNama());
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
 
     public static void updateFood(Foods food) {
-        String sql = "UPDATE foods SET name=?, asal=?, deskripsi=? WHERE provinsi_id=?";
+        String sql = "UPDATE foods SET name=?, asal=?, deskripsi=? WHERE id=?";
         try (Connection conn = DatabaseConnector.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, food.getNama());
-            pstmt.setString(2, food.getAsal());
             pstmt.setString(3, food.getDeskripsi());
-            pstmt.setInt(4, food.getProvinsiId());
+            pstmt.setInt(4, food.getId());
             pstmt.executeUpdate();
-            System.out.println("Food updated in database: " + food.getNama()); // Debug log
+            System.out.println("Food updated in database: " + food.getNama());
+
+            for (Foods f : foodsDatabase) {
+                if (f.getId() == food.getId()) {
+                    f.setNama(food.getNama());
+                    f.setDeskripsi(food.getDeskripsi());
+                    break;
+                }
+            }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
 
     public static void deleteFood(Foods food) {
-        String sql = "DELETE FROM foods WHERE name=?";
+        String sql = "DELETE FROM foods WHERE id=?";
         try (Connection conn = DatabaseConnector.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, food.getNama());
+            pstmt.setInt(1, food.getId());
             pstmt.executeUpdate();
             foodsDatabase.remove(food);
-            System.out.println("Food deleted from database: " + food.getNama()); // Debug log
+            System.out.println("Food deleted from database: " + food.getNama());
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

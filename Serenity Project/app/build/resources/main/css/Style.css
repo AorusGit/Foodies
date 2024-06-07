@@ -219,12 +219,188 @@
     -fx-translate-y: 100;
 }
 
-.highlight-row {
-    -fx-background-color: yellow;
-    -fx-border-color: red;
-    -fx-border-width: 2px;
+.usernameAdminText {
+    -fx-font-size: 40px;
+    -fx-font-family: 'Tahoma';
+    -fx-font-weight: bold;
+    -fx-text-align: left;
+    -fx-fill: #ffffff;
+    -fx-translate-x: -300;
+    -fx-translate-y: -150;
 }
 
+.signUpLog {
+    -fx-font-size: 16px;
+    -fx-font-family: 'Tahoma';
+    -fx-font-weight: lighter;
+    -fx-text-align: left;
+    -fx-fill: #ffffff;
+    -fx-translate-x: -450;
+    -fx-translate-y: 0;
+}
+
+#signButton {
+    -fx-font-size: 35px;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: lighter;
+    -fx-background-color: #e79d36;
+    -fx-font-family: 'Tahoma';
+    -fx-translate-x: -10;
+    -fx-translate-y: 150;
+    -fx-fill: #e79d36;
+}
+
+.usernameAdminField {
+    -fx-font-size: 25px;
+    -fx-font-family: 'Tahoma';
+    -fx-font-weight: bold;
+    -fx-text-align: left;
+    -fx-text-fill: #ffffff;
+    -fx-fill: #ffffff;
+    -fx-translate-x: 80;
+    -fx-translate-y: -149;
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em;
+}
+
+.NameField {
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #e79d36;
+    -fx-font-family: 'Tahoma';
+    -fx-translate-x: 80;
+    -fx-translate-y: -149;
+    -fx-fill: #e79d36;
+}
+
+.passAdminText {
+    -fx-font-size: 40px;
+    -fx-font-family: 'Tahoma';
+    -fx-font-weight: bold;
+    -fx-text-align: left;
+    -fx-fill: #ffffff;
+    -fx-translate-x: -301;
+    -fx-translate-y: -50;
+}
+.passAdminField {
+    -fx-font-size: 25px;
+    -fx-font-family: 'Tahoma';
+    -fx-font-weight: bold;
+    -fx-text-align: left;
+    -fx-text-fill: #ffffff;
+    -fx-fill: #ffffff;
+    -fx-translate-x: 80;
+    -fx-translate-y: -50;
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em;
+}
+
+.passField {
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #e79d36;
+    -fx-font-family: 'Tahoma';
+    -fx-translate-x: 80;
+    -fx-translate-y: -50;
+    -fx-fill: #e79d36;
+}
+.RnameAdminText {
+    -fx-font-size: 40px;
+    -fx-font-family: 'Tahoma';
+    -fx-font-weight: bold;
+    -fx-text-align: left;
+    -fx-fill: #ffffff;
+    -fx-translate-x: -300;
+    -fx-translate-y: -150;
+}
+
+.RnameAdminField {
+    -fx-font-size: 25px;
+    -fx-font-family: 'Tahoma';
+    -fx-font-weight: bold;
+    -fx-text-align: left;
+    -fx-text-fill: #ffffff;
+    -fx-fill: #ffffff;
+    -fx-translate-x: 80;
+    -fx-translate-y: -149;
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em;
+}
+
+.RNameField {
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #e79d36;
+    -fx-font-family: 'Tahoma';
+    -fx-translate-x: 80;
+    -fx-translate-y: -149;
+    -fx-fill: #e79d36;
+}
+
+.RusernameAdminText {
+    -fx-font-size: 40px;
+    -fx-font-family: 'Tahoma';
+    -fx-font-weight: bold;
+    -fx-text-align: left;
+    -fx-fill: #ffffff;
+    -fx-translate-x: -300;
+    -fx-translate-y: -50;
+}
+
+.RusernameAdminField {
+    -fx-font-size: 25px;
+    -fx-font-family: 'Tahoma';
+    -fx-font-weight: bold;
+    -fx-text-align: left;
+    -fx-text-fill: #ffffff;
+    -fx-fill: #ffffff;
+    -fx-translate-x: 80;
+    -fx-translate-y: -49;
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em;
+}
+
+.RUNameField {
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #e79d36;
+    -fx-font-family: 'Tahoma';
+    -fx-translate-x: 80;
+    -fx-translate-y: -49;
+    -fx-fill: #e79d36;
+}
+
+.RpassAdminText {
+    -fx-font-size: 40px;
+    -fx-font-family: 'Tahoma';
+    -fx-font-weight: bold;
+    -fx-text-align: left;
+    -fx-fill: #ffffff;
+    -fx-translate-x: -301;
+    -fx-translate-y: 50;
+}
+.RpassAdminField {
+    -fx-font-size: 25px;
+    -fx-font-family: 'Tahoma';
+    -fx-font-weight: bold;
+    -fx-text-align: left;
+    -fx-text-fill: #ffffff;
+    -fx-fill: #ffffff;
+    -fx-translate-x: 80;
+    -fx-translate-y: 50;
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em;
+}
+
+.RpassField {
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #e79d36;
+    -fx-font-family: 'Tahoma';
+    -fx-translate-x: 80;
+    -fx-translate-y: 50;
+    -fx-fill: #e79d36;
+}
 .root {
     -fx-background-image: url(/image/Background.jpg);
 }

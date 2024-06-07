@@ -44,7 +44,7 @@ public class AdminScreen implements Show {
         btnLng1.setShape(new Circle(100));
         btnLng1.setMinSize(50, 50);
         btnLng1.getStyleClass().add("btnLing1");
-        btnLng1.setOnAction(e -> app.showLogScreen());
+        btnLng1.setOnAction(e -> app.showLoginScreen());
 
         Image image1 = new Image(getClass().getResource("/image/back.png").toExternalForm());
 
@@ -52,7 +52,7 @@ public class AdminScreen implements Show {
         imageView1.setFitWidth(45);
         imageView1.setFitHeight(45);
         imageView1.getStyleClass().add("backbtn");
-        imageView1.setOnMouseClicked(e -> app.showLogScreen());
+        imageView1.setOnMouseClicked(e -> app.showLoginScreen());
 
         GridPane vbox = new GridPane();
         vbox.setHgap(24);

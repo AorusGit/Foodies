@@ -11,11 +11,13 @@ import javafx.scene.shape.*;
 import javafx.scene.image.*;
 import id.app.Controller.FoodsController;
 import id.app.Data.Foods;
+import id.app.ETC.Admin;
 import id.app.App;
 
 import java.util.List;
 
-public class EditorScreen extends admin {
+// Abstract 2
+public class EditorScreen extends Admin {
     private App app;
     private Scene scene;
     private TableView<Foods> tableView;
@@ -28,14 +30,15 @@ public class EditorScreen extends admin {
     int id;
     Foods rowData;
     int food;
+    private String validatedUserName;
     
-    public EditorScreen(App app) {
+    public EditorScreen(App app, String validatedUserName) {
         this.app = app;
         this.foods = FoodsController.getFoodsByProvinsiId(app.getSelectedProvinsiId());
         this.provinsiName = FoodsController.getProvinsiNameById(app.getSelectedProvinsiId());
+        this.validatedUserName = validatedUserName;
         edit();
     }
-
 
     private void editorScreen() {
         BorderPane root = new BorderPane();
@@ -111,14 +114,14 @@ public class EditorScreen extends admin {
         btnLng1.setShape(new Circle(100));
         btnLng1.setMinSize(50, 50);
         btnLng1.getStyleClass().add("btnLing1");
-        btnLng1.setOnAction(e -> app.showAdminScreen());
+        btnLng1.setOnAction(e -> app.showAdminScreen(validatedUserName));
 
         Image image1 = new Image(getClass().getResource("/image/back.png").toExternalForm());
         ImageView imageView1 = new ImageView(image1);
         imageView1.setFitWidth(45);
         imageView1.setFitHeight(45);
         imageView1.getStyleClass().add("backbtn");
-        imageView1.setOnMouseClicked(e -> app.showAdminScreen());
+        imageView1.setOnMouseClicked(e -> app.showAdminScreen(validatedUserName));
 
         stack.getChildren().addAll(border, page, btnLng1, imageView1);
         stack.setAlignment(Pos.CENTER);
@@ -141,7 +144,6 @@ public class EditorScreen extends admin {
         scene = new Scene(root);
         applyStylesheet();
     }
-    
 
     @SuppressWarnings("unchecked")
     private TableView<Foods> createFoodTable(List<Foods> foods) {
@@ -180,48 +182,55 @@ public class EditorScreen extends admin {
 
         tableView.getColumns().addAll(nameColumn, descriptionColumn);
 
-        tableView.setRowFactory(tv -> new TableRow<>() {
-            @Override
-            protected void updateItem(Foods item, boolean empty) {
-                super.updateItem(item, empty);
-                if (!empty) {
-                    setStyle("-fx-background-color: #F5DEB3;"); // Warna coklat muda
-                } else {
-                    setStyle("");
-                }
-            }
-        });
-
         tableView.setRowFactory(tv -> {
-            TableRow<Foods> row = new TableRow<>();
+            TableRow<Foods> row = new TableRow<>() {
+                @Override
+                protected void updateItem(Foods item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty || item == null) {
+                        getStyleClass().remove("non-empty");
+                    } else {
+                        if (!getStyleClass().contains("non-empty")) {
+                            getStyleClass().add("non-empty");
+                        }
+                    }
+                }
+            };
             row.setOnMouseClicked(event -> {
                 if (!row.isEmpty()) {
                     rowData = row.getItem();
                     nameField.setText(rowData.getNama());
-                    rowData.getId();
                     descriptionField.setText(rowData.getDeskripsi());
                 }
             });
+            row.getStyleClass().add("table-row-cell");
             return row;
         });
 
         return tableView;
     }
 
+
     private void addFood(String name, String description) {
         if (name.isEmpty() || description.isEmpty()) {
-            showAlert("Input Error", "Name and description cannot be empty");
+            showAlert("Input Error", "Name or description cannot be empty");
             return;
         }
+
+        if (name.length() > 30 || description.length() > 1200) {
+            showAlert("Input Error", "Name or description is too long");
+            return;
+        }
+        
         for (Foods food : data) {
             if (food.getNama().equalsIgnoreCase(name)) {
-                showAlert("Tidak bisa menambah data", "Makanan dengan nama yang sama sudah ada");
+                showAlert("Tidak bisa menambah data", "Food Already Exist");
                 return;
             }
         }
         for (Foods food : data) {
             if (food.getDeskripsi().equalsIgnoreCase(description)) {
-                showAlert("Tidak bisa menambah data", "Detail makanan yang sama sudah ada");
+                showAlert("Tidak bisa menambah data", "Description Already Exist");
                 return;
             }
         }
@@ -243,13 +252,16 @@ public class EditorScreen extends admin {
             showAlert("Input Error", "Name and description cannot be empty");
             return;
         }
+        if (name.length() > 30 || description.length() > 1200) {
+            showAlert("Input Error", "Name or description is too long");
+            return;
+        }
         selectedFood.setNama(name);
         selectedFood.setDeskripsi(description);
         selectedFood.setId(foodId);
         FoodsController.updateFood(selectedFood);
         tableView.refresh();
     }
-
     private void deleteFood() {
         Foods selectedFood = tableView.getSelectionModel().getSelectedItem();
         if (selectedFood == null) {
@@ -270,6 +282,7 @@ public class EditorScreen extends admin {
     public void edit(){
         editorScreen();
     }
+
     private void applyStylesheet() {
         String css = this.getClass().getResource("/css/Style.css").toExternalForm();
         scene.getStylesheets().add(css);

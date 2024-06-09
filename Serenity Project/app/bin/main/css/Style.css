@@ -35,8 +35,18 @@
     -fx-font-weight: bold;
     -fx-text-align: left;
     -fx-fill: #ffffff;
-    -fx-translate-x: 93;
-    -fx-translate-y: 75;
+    -fx-translate-x: 200;
+    -fx-translate-y: 110;
+}
+
+.logo-text5 {
+    -fx-font-size: 35px;
+    -fx-font-family: 'Tahoma';
+    -fx-font-weight: bold;
+    -fx-text-align: left;
+    -fx-fill: #ffffff;
+    -fx-translate-x: -100;
+    -fx-translate-y: 10;
 }
 
 .texts {
@@ -92,6 +102,16 @@
     -fx-fill: #e79d36; 
 }
 
+.table-row-cell {
+    -fx-border-color: transparent transparent #dcdcdc transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.table-row-cell.non-empty {
+    -fx-border-color: transparent transparent #bfbfbf transparent;
+    -fx-border-width: 0 0 2 0;
+}
+
 #addButton {
     -fx-font-size: 15px;
     -fx-text-fill: #ffffff;
@@ -128,7 +148,7 @@
     -fx-translate-x: -20;
     -fx-translate-y: 120;
     -fx-padding: 10 20;
-    -fx-background-color: #d5a96a;
+    -fx-background-color: #e9aa36;
     -fx-prompt-text-fill: brown;
 }
 
@@ -138,12 +158,12 @@
     -fx-translate-x: -20;
     -fx-translate-y: 120;
     -fx-padding: 10 20;
-    -fx-background-color: #d5a96a;
+    -fx-background-color: #e9aa36;
     -fx-prompt-text-fill: brown;
 }
 
 #descriptionArea {
-    -fx-control-inner-background: #d5a96a; 
+    -fx-control-inner-background: #e9aa36; 
     -fx-text-fill: #580505; 
 }
 
@@ -239,6 +259,16 @@
     -fx-translate-y: 0;
 }
 
+.signInLog {
+    -fx-font-size: 16px;
+    -fx-font-family: 'Tahoma';
+    -fx-font-weight: lighter;
+    -fx-text-align: left;
+    -fx-fill: #ffffff;
+    -fx-translate-x: -450;
+    -fx-translate-y: 98;
+}
+
 #signButton {
     -fx-font-size: 35px;
     -fx-text-fill: #ffffff;
@@ -291,6 +321,34 @@
     -fx-fill: #ffffff;
     -fx-translate-x: 80;
     -fx-translate-y: -50;
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em;
+}
+
+.passAdminShow {
+    -fx-font-size: 25px;
+    -fx-font-family: 'Tahoma';
+    -fx-font-weight: bold;
+    -fx-text-align: left;
+    -fx-text-fill: #ffffff;
+    -fx-fill: #ffffff;
+    -fx-translate-x: 80;
+    -fx-translate-y: -50;
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em;
+}
+
+.passAdminShow1 {
+    -fx-font-size: 25px;
+    -fx-font-family: 'Tahoma';
+    -fx-font-weight: bold;
+    -fx-text-align: left;
+    -fx-text-fill: #ffffff;
+    -fx-fill: #ffffff;
+    -fx-translate-x: 80;
+    -fx-translate-y: 50;
     -fx-background-color: transparent;
     -fx-background-insets: 0;
     -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em;
@@ -401,6 +459,37 @@
     -fx-translate-y: 50;
     -fx-fill: #e79d36;
 }
+
+.vpass1 {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-background-color: #e79d36;
+    -fx-text-fill: white;
+    -fx-padding: 10px 20px;
+    -fx-translate-x: 380;
+    -fx-translate-y: -50;
+    -fx-font-size: 14px;
+}
+.viewPassImages {
+    -fx-translate-x: 380;
+    -fx-translate-y: -50;
+}
+
+.vpass2 {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-background-color: #e79d36;
+    -fx-text-fill: white;
+    -fx-padding: 10px 20px;
+    -fx-translate-x: 380;
+    -fx-translate-y: 50;
+    -fx-font-size: 14px;
+}
+.viewPassImages1 {
+    -fx-translate-x: 380;
+    -fx-translate-y: 50;
+}
+
 .root {
     -fx-background-image: url(/image/Background.jpg);
 }

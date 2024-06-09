@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+// data "Asal" telah di hapus karena tidak terpakai
 public class FoodsController {
     private static List<Foods> foodsDatabase = new ArrayList<>();
     public static List<Foods> loadAllFoods() {

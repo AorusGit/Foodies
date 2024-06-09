@@ -61,8 +61,8 @@ public class FoodScreen {
         vbox.setVgap(10);
 
         for (Foods food : foods) {
-            Label foodLabel = new Label("• " + food.getNama());
-            foodLabel.getStyleClass().add("datas");
+            Label foodLabel = new Label("• " + food.getNama());// ukuran daftar nama makanannya di perkecil
+            foodLabel.getStyleClass().add("texts");
             foodLabel.setPadding(new Insets(10, 75, 10, 75));
             foodLabel.setOnMouseClicked(event -> {
                 System.out.println(food.getNama());

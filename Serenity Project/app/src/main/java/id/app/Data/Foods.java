@@ -1,6 +1,6 @@
 package id.app.Data;
 
-
+//Enkapsulasi
 public class Foods {
     private int id;
     private int provinsiId;

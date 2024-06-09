@@ -2,6 +2,7 @@ package id.app.screen;
 
 import id.app.Controller.ProvinsiController;
 import id.app.Data.Provinsi;
+import id.app.ETC.Show;
 import javafx.scene.Scene;
 import javafx.geometry.*;
 import javafx.scene.control.*;
@@ -12,14 +13,18 @@ import javafx.scene.image.*;
 import id.app.App;
 import java.util.*;
 
+//poly 3
+
 public class AdminScreen implements Show {
     private App app;
     private Scene scene;
     int column;
     int row;
+    private String validatedUserName;
 
-    public AdminScreen(App app) {
+    public AdminScreen(App app,String validatedUserName) {
         this.app = app;
+        this.validatedUserName = validatedUserName;
         show();
     }
 
@@ -31,6 +36,9 @@ public class AdminScreen implements Show {
 
         Text page = new Text("ADMIN PAGE");
         page.getStyleClass().add("logo-text3");
+
+        Text user = new Text("Welcome, " + validatedUserName + "!");// menambah kalimat "welcome" untuk admin yang login
+        user.getStyleClass().add("logo-text5");
 
         Rectangle kotak = new Rectangle();
         kotak.setHeight(70);
@@ -44,7 +52,7 @@ public class AdminScreen implements Show {
         btnLng1.setShape(new Circle(100));
         btnLng1.setMinSize(50, 50);
         btnLng1.getStyleClass().add("btnLing1");
-        btnLng1.setOnAction(e -> app.showLoginScreen());
+        btnLng1.setOnAction(e -> app.showMainScreen());
 
         Image image1 = new Image(getClass().getResource("/image/back.png").toExternalForm());
 
@@ -52,7 +60,7 @@ public class AdminScreen implements Show {
         imageView1.setFitWidth(45);
         imageView1.setFitHeight(45);
         imageView1.getStyleClass().add("backbtn");
-        imageView1.setOnMouseClicked(e -> app.showLoginScreen());
+        imageView1.setOnMouseClicked(e -> app.showMainScreen());
 
         GridPane vbox = new GridPane();
         vbox.setHgap(24);
@@ -66,7 +74,7 @@ public class AdminScreen implements Show {
                 try {
                     app.setSelectedProvinsiId(provinsi.getId());
                     System.out.println("testing" + provinsi.getId());
-                    app.showEditorScreen();
+                    app.showEditorScreen(validatedUserName);
                 } catch (Exception e) {
                     System.out.println(e);
                 }
@@ -81,8 +89,9 @@ public class AdminScreen implements Show {
 
         }
 
-        stack.getChildren().addAll(border,page,vbox,btnLng1,imageView1);
+        stack.getChildren().addAll(border,page,user,vbox,btnLng1,imageView1);
         stack.setAlignment(Pos.CENTER);
+        StackPane.setAlignment(user, Pos.TOP_RIGHT);
         StackPane.setAlignment(page, Pos.TOP_LEFT);
         StackPane.setAlignment(btnLng1, Pos.TOP_LEFT);
         StackPane.setAlignment(imageView1, Pos.TOP_LEFT);

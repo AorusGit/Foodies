@@ -1,0 +1,12 @@
+//Update dan Perbaikan
+1. Mengecilkan ukuran daftar nama makanan ketika telah menekan salah satu nama provinsi.
+2. Menggeser posisi tulisan deskripsi setelah menekan salah satu nama makanan agar tampak lebih baik.
+3. Menambah mode Login untuk admin tapi tidak ada mode register.
+4. Menambah nama dari pemilik akun di admin screen.
+5. Memperbaiki pengecekan agar tidak ada nama makanan yang sama atau deskripsi yang sama ketika menambah makanan.
+6. memberi batas penulisan nama dan deskripsi pada mode edit.
+7. memberi scroll pada textfield deskripsi
+8. memberi garis pembatas di mode edit untuk makanan
+
+// code
+9. memperbaiki sistem 4 pilar oop pada aplikasi

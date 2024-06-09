@@ -44,7 +44,7 @@ public class UserScreen {
         btnLng1.setShape(new Circle(100));
         btnLng1.setMinSize(50, 50);
         btnLng1.getStyleClass().add("btnLing1");
-        btnLng1.setOnAction(e -> app.showLoginScreen());
+        btnLng1.setOnAction(e -> app.showMainScreen());
 
         Image image1 = new Image(getClass().getResource("/image/back.png").toExternalForm());
 
@@ -52,7 +52,7 @@ public class UserScreen {
         imageView1.setFitWidth(45);
         imageView1.setFitHeight(45);
         imageView1.getStyleClass().add("backbtn");
-        imageView1.setOnMouseClicked(e -> app.showLoginScreen());
+        imageView1.setOnMouseClicked(e -> app.showMainScreen());
 
         GridPane vbox = new GridPane();
         vbox.setHgap(24);

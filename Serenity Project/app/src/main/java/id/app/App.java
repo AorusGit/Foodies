@@ -1,12 +1,11 @@
 package id.app;
 
 import id.app.Controller.FoodsController;
-import id.app.screen.LoginScreen;
+import id.app.screen.MainScreen;
 import id.app.screen.UserScreen;
 import id.app.screen.FoodScreen;
 import id.app.screen.FoodDetailScreen;
 import id.app.screen.AdminLoginScreen;
-import id.app.screen.AdminRegisterScreen;
 import id.app.screen.AdminScreen;
 import id.app.screen.EditorScreen;
 import javafx.application.Application;
@@ -30,11 +29,11 @@ public class App extends Application {
 
         FoodsController.loadAllFoods();
         
-        showLoginScreen();
+        showMainScreen();
     }
 
-    public void showLoginScreen() {
-        LoginScreen mainScene = new LoginScreen(this);
+    public void showMainScreen() {
+        MainScreen mainScene = new MainScreen(this);
         primaryStage.setScene(mainScene.getScene());
         primaryStage.show();
     }
@@ -45,20 +44,16 @@ public class App extends Application {
         primaryStage.show();
     }
 
+    // menambah mode Login untuk admin, tanpa register
     public void showAdminLoginScreen() {
         AdminLoginScreen adminLoginScene = new AdminLoginScreen(this);
         primaryStage.setScene(adminLoginScene.getScene());
         primaryStage.show();
     }
 
-    public void showAdminRegisterScreen() {
-        AdminRegisterScreen adminRegisterScene = new AdminRegisterScreen(this);
-        primaryStage.setScene(adminRegisterScene.getScene());
-        primaryStage.show();
-    }
-
-    public void showAdminScreen() {
-        AdminScreen adminScene = new AdminScreen(this);
+    //menambah string validatedUserName untuk mengambil nama admin yang di pakai di AdminScreen
+    public void showAdminScreen(String validatedUserName) {
+        AdminScreen adminScene = new AdminScreen(this,validatedUserName);
         primaryStage.setScene(adminScene.getScene());
         primaryStage.show();
     }
@@ -75,8 +70,9 @@ public class App extends Application {
         primaryStage.show();
     }
 
-    public void showEditorScreen() {
-        EditorScreen editorScene = new EditorScreen(this);
+    //menambah string validatedUserName untuk mengambil nama admin yang di pakai di AdminScreen ketika balik dari editor screen
+    public void showEditorScreen(String validatedUserName) {
+        EditorScreen editorScene = new EditorScreen(this,validatedUserName);
         primaryStage.setScene(editorScene.getScene());
         primaryStage.show();
     }

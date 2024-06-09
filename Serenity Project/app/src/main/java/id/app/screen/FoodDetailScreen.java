@@ -31,7 +31,7 @@ public class FoodDetailScreen {
         Text name = new Text(food.getNama());
         name.getStyleClass().add("logo-text3");
 
-        Text deskripsi = new Text("Deskripsi");
+        Text deskripsi = new Text("Deskripsi"); // diatur posisinya jadi lebih baik
         deskripsi.getStyleClass().add("logo-text4");
 
         Rectangle kotak = new Rectangle();

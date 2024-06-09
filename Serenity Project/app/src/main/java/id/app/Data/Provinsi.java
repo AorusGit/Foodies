@@ -1,37 +1,19 @@
+
 package id.app.Data;
 
-import javafx.beans.property.*;
+//inheritance
+public class Provinsi extends Foods {
 
-public class Provinsi {
-    private final IntegerProperty id;
-    private final StringProperty name;
-
-    public Provinsi(String name) {
-        this.id = new SimpleIntegerProperty();
-        this.name = new SimpleStringProperty(name);
+    public Provinsi() {
+        super();
     }
 
-    public int getId() {
-        return id.get();
+    public Provinsi(String nama) {
+        super(nama);
     }
 
-    public void setId(int id) {
-        this.id.set(id);
-    }
-
-    public IntegerProperty idProperty() {
-        return id;
-    }
-
-    public String getNama() {
-        return name.get();
-    }
-
-    public void setNama(String name) {
-        this.name.set(name);
-    }
-
-    public StringProperty namaProperty() {
-        return name;
+    public Provinsi(int id, String nama) {
+        super(nama);
+        setId(id);
     }
 }

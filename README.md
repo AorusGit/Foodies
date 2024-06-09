@@ -54,7 +54,12 @@ https://github.com/AorusGit/Foodies.git
 ![FoodDetailScreen](https://github.com/AorusGit/Foodies/assets/144238044/c3dcc8ea-2110-4f92-a4de-19365baeae5d)
 
 ### Login Menu Scene
+![SignInMenu](https://github.com/AorusGit/Foodies/assets/144238044/ec67c6f4-18ee-4ede-9689-7bf5a97d25d3)
 
-### Sign In Scene
+### Admin Menu Scene
+![AdminPage](https://github.com/AorusGit/Foodies/assets/144238044/358c447b-783b-46d6-bcec-28de9f093f0f)
 
-### Editor Scene
+### Edit Menu Scene
+![EditMenuScene](https://github.com/AorusGit/Foodies/assets/144238044/30d095cb-2be6-4cec-9c5d-361287d2f6f3)
+
+## Pengujian Aplikasi

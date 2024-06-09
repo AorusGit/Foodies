@@ -33,7 +33,7 @@ Tujuan dibuatnya aplikasi adalah untuk mempermudah user dalam mencari kuliner ya
 
 ## Penjelasan Penerapan Prinsip OOP
 1. Inheritance : class Foods mewariskan atribut nama kepada class Provinsi, sehingga atribut nama pada class Provinsi tinggal menggunakan keyword 'super' untuk menggunakan atribut 'nama'.
-2. Polymorphism : ditunjukkan pada method show() yang digunakan di berbagai class dengan kebutuhan yang berbeda-beda dengan nama yang sama.
+2. Polymorphism : ditunjukkan pada method show() yang memungkinkan metode dengan nama yang sama untuk digunakan di berbagai kelas dengan perilaku yang berbeda. Dalam hal ini, metode show() digunakan di beberapa kelas yaitu class AdminLoginScreen, class AdminScreen, dan class LoginScreen dengan implementasi yang berbeda sesuai dengan kebutuhan masing-masing kelas.
 3. Abstraction : class Abstarct ditunjukkan pada Abstact class admin yang di-extends pada class EditorScreen. Adapun Interface terdapat pada Interface Show yang di-implements pada beberapa class yaitu class AdminLoginScreen, class AdminScreen, dan class LoginScreen. Abstraction juga diterapkan dengan menyembunyikan detail koneksi database di dalam metode getConnection(), sehingga user tidak perlu tahu bagaimana cara menghubungkan ke database.
 4. Encapsulation : ditunjukkan pada class Foods dimana atribut-atributnya di-enkapsulasi dalam bentuk private, sehingga hanya dapat diakses menggunakan method setter-getter.
 

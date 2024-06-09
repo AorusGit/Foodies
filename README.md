@@ -32,6 +32,10 @@ Tujuan dibuatnya aplikasi adalah untuk mempermudah user dalam mencari kuliner ya
    Menampilkan data provinsi yang didalamnya terdapat list makanan dan minuman tradisional yang berisi deskripsi dari makanan dan minuman tradisional tersebut.
 
 ## Penjelasan Penerapan Prinsip OOP
+1. Inheritance : class Foods mewariskan atribut nama kepada class Provinsi, sehingga atribut nama pada class Provinsi tinggal menggunakan keyword 'super' untuk menggunakan atribut 'nama'.
+2. Polymorphism : ditunjukkan pada method show() yang digunakan di berbagai class dengan kebutuhan yang berbeda-beda dengan nama yang sama.
+3. Abstraction : class Abstarct ditunjukkan pada Abstact class admin yang di-extends pada class EditorScreen. Adapun Interface terdapat pada Interface Show yang di-implements pada beberapa class yaitu class AdminLoginScreen, class AdminScreen, dan class LoginScreen. Abstraction juga diterapkan dengan menyembunyikan detail koneksi database di dalam metode getConnection(), sehingga user tidak perlu tahu bagaimana cara menghubungkan ke database.
+4. Encapsulation : ditunjukkan pada class Foods dimana atribut-atributnya di-enkapsulasi dalam bentuk private, sehingga hanya dapat diakses menggunakan method setter-getter.
 
 ## Mentoring
 1. Jum'at, 24 Mei 2023
@@ -57,9 +61,12 @@ https://github.com/AorusGit/Foodies.git
 ![SignInMenu](https://github.com/AorusGit/Foodies/assets/144238044/ec67c6f4-18ee-4ede-9689-7bf5a97d25d3)
 
 ### Admin Menu Scene
-![AdminPage](https://github.com/AorusGit/Foodies/assets/144238044/358c447b-783b-46d6-bcec-28de9f093f0f)
+![AdminPage1](https://github.com/AorusGit/Foodies/assets/144238044/c0591cbf-f43b-47dd-a08a-5cbb92fffdff)
 
 ### Edit Menu Scene
 ![EditMenuScene](https://github.com/AorusGit/Foodies/assets/144238044/30d095cb-2be6-4cec-9c5d-361287d2f6f3)
 
 ## Pengujian Aplikasi
+![UjiCoba1](https://github.com/AorusGit/Foodies/assets/144238044/1475660d-b527-4d1c-86e7-331393d460f0)
+![UjiCoba2](https://github.com/AorusGit/Foodies/assets/144238044/52802e35-d9bd-4479-a5ee-8a9ff48b7f6c)
+
